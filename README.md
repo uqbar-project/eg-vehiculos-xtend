@@ -1,7 +1,7 @@
 
 # Ejercicio de Diseño - Vehículos
 
-![images/vehicles.png] 
+![image](images/vehicles.png) 
 
 ## Dominio
 Dados un avión y un automóvil, implementar el siguiente comportamiento:
