@@ -4,12 +4,22 @@ import ar.edu.vehiculos.Vehiculo
 
 class Avion implements Vehiculo {
 
+	int avances = 0
+	
 	override avanzar() {
-		println("Avanza avion!")
+		avances++	
 	}
 	
 	override chocar(Vehiculo vehiculo) {
-		throw new Exception("Imposible chocar con un avion")
+		this.doChocar
+	}
+	
+	override chocado() {
+		false
+	}
+	
+	override doChocar() {
+		throw new RuntimeException("Imposible chocar con un avion")
 	}
 	
 }

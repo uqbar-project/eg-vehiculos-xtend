@@ -1,15 +1,30 @@
 package ar.edu.vehiculos
 
-import ar.edu.vehiculos.Vehiculo
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class Auto implements Vehiculo {
 
+	int colisiones = 0
+	int kilometros = 0
+	int velocidad = 40
+	
 	override avanzar() {
-		println("Avanza auto")
+		kilometros += velocidad
 	}
 	
 	override chocar(Vehiculo vehiculo) {
-		println("Chocamosss!!!!")
+		this.doChocar	
+		vehiculo.doChocar()
+	}
+	
+	override doChocar() {
+		colisiones++
+	}
+	
+	
+	override chocado() {
+		colisiones > 0
 	}
 	
 }
