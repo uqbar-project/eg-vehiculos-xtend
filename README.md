@@ -1,6 +1,8 @@
 
 # Ejercicio de Diseño - Vehículos
 
+[![Build Status](https://travis-ci.org/uqbar-project/eg-master-xtend.svg?branch=refactoring)](https://travis-ci.org/uqbar-project/eg-master-xtend) [![Coverage Status](https://coveralls.io/repos/github/uqbar-project/eg-master-xtend/badge.svg?branch=refactoring)](https://coveralls.io/github/uqbar-project/eg-master-xtend?branch=refactoring)
+
 ![image](images/vehicles.png) 
 
 ## Dominio
