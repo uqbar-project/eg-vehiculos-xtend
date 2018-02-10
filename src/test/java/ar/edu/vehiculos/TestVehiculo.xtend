@@ -6,7 +6,7 @@ import org.junit.Test
 
 class TestVehiculo {
 	
-	Vehiculo boeing
+	Avion boeing
 	Auto fitito
 	Vehiculo fierrito
 	
@@ -18,21 +18,40 @@ class TestVehiculo {
 	}
 
 	@Test
-	def void testAvanzarFitito() {
+	def void estadoInicialDeLosVehiculosSinChocar() {
+		Assert.assertFalse(fitito.chocado)
+		Assert.assertFalse(fierrito.chocado)
+		Assert.assertFalse(boeing.chocado)
+	}
+	
+	@Test
+	def void avanzarFitito() {
 		fitito.avanzar()
 		Assert.assertEquals(40, fitito.kilometros)
 	}
 
 	@Test
-	def void testChocarFititoConFierrito() {
+	def void chocarFititoConFierrito() {
 		fitito.chocar(fierrito)
 		Assert.assertTrue(fitito.chocado)
 		Assert.assertTrue(fierrito.chocado)
 	}
 	
 	@Test(expected=typeof(RuntimeException))
-	def void testChocarBoeingConFitito() {
+	def void chocarBoeingConFitito() {
 		boeing.chocar(fitito)
 	}
 	
+	@Test
+	def void avionQueAvanza() {
+		Assert.assertEquals(0, boeing.avances)
+		boeing.avanzar()
+		Assert.assertEquals(1, boeing.avances)
+	}
+	
+	@Test
+	def void autoQueAvanza() {
+		fitito.avanzar()
+		Assert.assertEquals(40, fitito.kilometros)
+	}
 }

@@ -1,9 +1,10 @@
 package ar.edu.vehiculos
 
-import ar.edu.vehiculos.Vehiculo
+import org.eclipse.xtend.lib.annotations.Accessors
 
 class Avion implements Vehiculo {
 
+	@Accessors
 	int avances = 0
 	
 	override avanzar() {
