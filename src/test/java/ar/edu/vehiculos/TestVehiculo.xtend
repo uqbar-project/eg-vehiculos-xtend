@@ -41,6 +41,11 @@ class TestVehiculo {
 	def void chocarBoeingConFitito() {
 		boeing.chocar(fitito)
 	}
+
+	@Test(expected=typeof(RuntimeException))
+	def void chocarFititoConBoeing() {
+		fitito.chocar(boeing)
+	}
 	
 	@Test
 	def void avionQueAvanza() {
@@ -49,9 +54,4 @@ class TestVehiculo {
 		Assert.assertEquals(1, boeing.avances)
 	}
 	
-	@Test
-	def void autoQueAvanza() {
-		fitito.avanzar()
-		Assert.assertEquals(40, fitito.kilometros)
-	}
 }
