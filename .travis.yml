@@ -3,6 +3,7 @@ jdk:
   - oraclejdk11
 
 script:
+  - export JAVA_TOOL_OPTIONS="--add-modules=java.xml.bind"
   - mvn -e -DTRAVIS_JOB_ID=$TRAVIS_JOB_ID clean install jacoco:report coveralls:report
 
 
