@@ -1,60 +1,74 @@
 package ar.edu.vehiculos
 
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import static org.junit.jupiter.api.Assertions.assertTrue
-import static org.junit.jupiter.api.Assertions.assertFalse
-import static org.junit.jupiter.api.Assertions.assertEquals
-import static org.junit.jupiter.api.Assertions.assertThrows
 
+import static org.junit.jupiter.api.Assertions.assertEquals
+import static org.junit.jupiter.api.Assertions.assertFalse
+import static org.junit.jupiter.api.Assertions.assertThrows
+import static org.junit.jupiter.api.Assertions.assertTrue
+
+@DisplayName("Ejemplo de Vehículos")
 class TestVehiculo {
 	
-	Avion boeing
-	Auto fitito
-	Vehiculo fierrito
+	Avion avion
+	Auto auto1
+	Vehiculo auto2
 	
 	@BeforeEach
 	def void init() {
-		boeing = new Avion()
-		fitito = new Auto()
-		fierrito = new Auto()
+		avion = new Avion()
+		auto1 = new Auto()
+		auto2 = new Auto()
 	}
 
 	@Test
+	@DisplayName("inicialmente los vehículos no chocaron")
 	def void estadoInicialDeLosVehiculosSinChocar() {
-		assertFalse(fitito.chocado)
-		assertFalse(fierrito.chocado)
-		assertFalse(boeing.chocado)
-	}
-	
-	@Test
-	def void avanzarFitito() {
-		fitito.avanzar()
-		assertEquals(40, fitito.kilometros)
+		assertFalse(auto1.chocado)
+		assertFalse(avion.chocado)
 	}
 
 	@Test
-	def void chocarFititoConFierrito() {
-		fitito.chocar(fierrito)
-		assertTrue(fitito.chocado)
-		assertTrue(fierrito.chocado)
+	@DisplayName("inicialmente un auto no tiene colisiones")
+	def void estadoInicialDeLosAutosSinChocar() {
+		assertEquals(0, auto1.colisiones)
 	}
 	
 	@Test
-	def void chocarBoeingConFitito() {
-		assertThrows(RuntimeException, [ boeing.chocar(fitito) ])
+	@DisplayName("al avanzar un auto aumenta sus kilómetros recorridos")
+	def void avanzarAuto() {
+		auto1.avanzar()
+		assertEquals(40, auto1.kilometros)
 	}
 
 	@Test
-	def void chocarFititoConBoeing() {
-		assertThrows(RuntimeException, [ fitito.chocar(boeing) ])
+	@DisplayName("al avanzar un avión aumenta la cantidad de veces que avanzó")
+	def void avanzarAvion() {
+		assertEquals(0, avion.avances)
+		avion.avanzar()
+		assertEquals(1, avion.avances)
 	}
 	
 	@Test
-	def void avionQueAvanza() {
-		assertEquals(0, boeing.avances)
-		boeing.avanzar()
-		assertEquals(1, boeing.avances)
+	@DisplayName("cuando chocan dos autos, ambos registran que chocaron")
+	def void chocarDosAutos() {
+		auto1.chocar(auto2)
+		assertTrue(auto1.chocado)
+		assertTrue(auto2.chocado)
 	}
 
+	@Test
+	@DisplayName("no es posible que choquen un avión y un auto")
+	def void chocarAvionConAuto() {
+		assertThrows(RuntimeException, [ avion.chocar(auto1) ])
+	}
+
+	@Test
+	@DisplayName("no es posible que choquen un auto y un avión")
+	def void chocarAutoConAvion() {
+		assertThrows(RuntimeException, [ auto1.chocar(avion) ])
+	}
+	
 }
