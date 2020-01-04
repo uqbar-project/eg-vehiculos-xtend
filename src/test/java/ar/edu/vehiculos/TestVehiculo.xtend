@@ -1,8 +1,11 @@
 package ar.edu.vehiculos
 
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import static org.junit.jupiter.api.Assertions.assertTrue
+import static org.junit.jupiter.api.Assertions.assertFalse
+import static org.junit.jupiter.api.Assertions.assertEquals
+import static org.junit.jupiter.api.Assertions.assertThrows
 
 class TestVehiculo {
 	
@@ -10,7 +13,7 @@ class TestVehiculo {
 	Auto fitito
 	Vehiculo fierrito
 	
-	@Before
+	@BeforeEach
 	def void init() {
 		boeing = new Avion()
 		fitito = new Auto()
@@ -19,39 +22,39 @@ class TestVehiculo {
 
 	@Test
 	def void estadoInicialDeLosVehiculosSinChocar() {
-		Assert.assertFalse(fitito.chocado)
-		Assert.assertFalse(fierrito.chocado)
-		Assert.assertFalse(boeing.chocado)
+		assertFalse(fitito.chocado)
+		assertFalse(fierrito.chocado)
+		assertFalse(boeing.chocado)
 	}
 	
 	@Test
 	def void avanzarFitito() {
 		fitito.avanzar()
-		Assert.assertEquals(40, fitito.kilometros)
+		assertEquals(40, fitito.kilometros)
 	}
 
 	@Test
 	def void chocarFititoConFierrito() {
 		fitito.chocar(fierrito)
-		Assert.assertTrue(fitito.chocado)
-		Assert.assertTrue(fierrito.chocado)
+		assertTrue(fitito.chocado)
+		assertTrue(fierrito.chocado)
 	}
 	
-	@Test(expected=typeof(RuntimeException))
+	@Test
 	def void chocarBoeingConFitito() {
-		boeing.chocar(fitito)
+		assertThrows(RuntimeException, [ boeing.chocar(fitito) ])
 	}
 
-	@Test(expected=typeof(RuntimeException))
+	@Test
 	def void chocarFititoConBoeing() {
-		fitito.chocar(boeing)
+		assertThrows(RuntimeException, [ fitito.chocar(boeing) ])
 	}
 	
 	@Test
 	def void avionQueAvanza() {
-		Assert.assertEquals(0, boeing.avances)
+		assertEquals(0, boeing.avances)
 		boeing.avanzar()
-		Assert.assertEquals(1, boeing.avances)
+		assertEquals(1, boeing.avances)
 	}
-	
+
 }
