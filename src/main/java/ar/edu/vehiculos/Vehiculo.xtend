@@ -37,7 +37,7 @@ class Auto implements Vehiculo {
 
 class Avion implements Vehiculo {
 
-	@Accessors
+	@Accessors(PUBLIC_GETTER)
 	int avances = 0
 	
 	override avanzar() {
