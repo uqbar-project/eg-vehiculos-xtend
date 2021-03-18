@@ -40,9 +40,9 @@ class TestVehiculo {
 	@DisplayName("al avanzar un auto aumenta sus kilómetros recorridos")
 	def void avanzarAuto() {
 		auto1.avanzar()
-		assertEquals(40, auto1.kilometros)
+		assertEquals(30, auto1.kilometros)
 	}
-
+	
 	@Test
 	@DisplayName("al avanzar un avión aumenta la cantidad de veces que avanzó")
 	def void avanzarAvion() {

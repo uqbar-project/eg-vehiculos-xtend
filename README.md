@@ -8,7 +8,7 @@
 ## Dominio
 Dados un avión y un automóvil, implementar el siguiente comportamiento:
 
-- avanzar: el avión registra las veces que avanzó, el auto avanza 40 kilómetros cada avance
+- avanzar: el avión registra las veces que avanzó, el auto avanza 30 kilómetros cada avance
 - chocar: los autos registran las colisiones que tienen, los aviones no pueden chocar nunca
 
 ## Objetivo
