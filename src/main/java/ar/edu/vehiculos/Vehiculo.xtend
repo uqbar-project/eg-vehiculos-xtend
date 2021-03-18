@@ -14,7 +14,7 @@ class Auto implements Vehiculo {
 
 	@Accessors(PUBLIC_GETTER) int colisiones = 0
 	@Accessors int kilometros = 0
-	static int KILOMETROS_POR_HORA = 40
+	static int KILOMETROS_POR_HORA = 30
 	
 	override avanzar() {
 		kilometros += ar.edu.vehiculos.Auto.KILOMETROS_POR_HORA
